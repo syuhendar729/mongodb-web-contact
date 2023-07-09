@@ -10,7 +10,7 @@ const cors = require("cors");
 app.use(cors(
 	{
 		origin: ["https://mongodb-web-contact-sr.vercel.app"],
-		method: ["POST", "GET"],
+		method: ["POST", "GET", "PUT", "DELETE"],
 		credential: true,
 	}
 ))
