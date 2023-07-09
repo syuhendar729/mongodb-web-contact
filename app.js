@@ -6,15 +6,6 @@ const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const port = 3001;
 
-const cors = require("cors");
-app.use(cors(
-	{
-		origin: ["https://mongodb-web-contact-sr.vercel.app"],
-		method: ["POST", "GET", "PUT", "DELETE"],
-		credential: true,
-	}
-))
-
 /* -- Koneksi ke database --  */
 require("./utils/db"); // => cuma butuh koneksi
 const Contact = require("./models/contact");
