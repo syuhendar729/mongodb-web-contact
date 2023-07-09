@@ -6,6 +6,15 @@ const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const port = 3001;
 
+const cors = require("cors");
+app.use(cors(
+	{
+		origin: [],
+		method: ["POST", "GET"],
+		credential: true,
+	}
+))
+
 /* -- Koneksi ke database --  */
 require("./utils/db"); // => cuma butuh koneksi
 const Contact = require("./models/contact");
@@ -123,21 +132,6 @@ app.post(
 		}
 	}
 );
-
-/* -- route delete contact -- */
-/* app.get("/contact/delete/:nama", async (req, res) => {
-	const contact = await Contact.findOne({ nama: req.params.nama });
-	// -- jika contact tidak ada --
-	if (!contact) {
-		res.status(404);
-		res.send("<h1>404</h1>");
-	} else {
-		Contact.deleteOne({ _id: contact._id }, (result) => {
-			req.flash("msg", "Data contact berhasil dihapus!");
-			res.redirect("/contact");
-		})
-	}
-}); */
 
 /* -- route delete contact dengan request `delete` -- */
 app.delete("/contact", (req, res) => {
