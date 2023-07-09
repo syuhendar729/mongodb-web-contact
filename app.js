@@ -209,8 +209,8 @@ app.use("/", (req, res) => {
 	res.send("<h1>Halaman Error 404</h1>");
 });
 
-app.listen(port, () => {
-	console.log(`Mongodb contact app | listening port ${port}... `);
+app.listen(process.env.PORT || port, () => {
+	console.log(`Mongodb contact app | listening port ${process.env.PORT || port}... `);
 });
 
 
